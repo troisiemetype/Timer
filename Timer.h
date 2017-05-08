@@ -47,7 +47,7 @@ protected:
 	uint32_t _now, _last, _end, _delay;
 	uint16_t _remainingLoops;
 
-	int8_t mode;
+	int8_t _mode;
 
 	bool _pause, _running;
 };

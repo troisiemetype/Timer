@@ -18,9 +18,8 @@
 
 #include "Timer.h"
 
-Timer::init(){
+void Timer::init(){
 	stop();
-	_function = NULL;
 }
 
 void Timer::setDelay(uint32_t delay){
@@ -50,7 +49,7 @@ void Timer::start(int16_t mode){
 }
 
 void Timer::pause(){
-	_pause ~= _pause;
+	_pause = !_pause;
 }
 
 void Timer::stop(){
@@ -72,9 +71,9 @@ bool Timer::update(){
 		if(_now >= _end){
 			if(_mode != 0){
 				if(_mode > 0){
-					if((_remainingLoops--) <= 0) stop();
-					_end = _now + _delay;
+					if((--_remainingLoops) <= 0) stop();
 				}
+				_end = _now + _delay;
 			} else {
 				stop();				
 			}
