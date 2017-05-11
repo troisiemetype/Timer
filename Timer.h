@@ -35,16 +35,26 @@ public:
 	void init();
 	void setDelay(uint32_t delay);
 	void setSeconds(uint16_t seconds);
-	void setMinutesSeconds(uint16_t minutes, uint8_t seconds);
+	void setMinutesSeconds(uint16_t minutes, uint8_t seconds = 0);
 	void start(int16_t mode = ONCE);
 	void pause();
 	void stop();
 
 	bool update();
 
+	uint32_t getCurrent();
+	uint16_t getSeconds();
+	uint16_t getSecondsM();
+	uint16_t getMinutes();
+
+	uint32_t getRCurrent();
+	uint16_t getRSeconds();
+	uint16_t getRSecondsM();
+	uint16_t getRMinutes();
+
 protected:
 
-	uint32_t _now, _last, _end, _delay;
+	uint32_t _start, _now, _last, _end, _delay;
 	uint16_t _remainingLoops;
 
 	int8_t _mode;
